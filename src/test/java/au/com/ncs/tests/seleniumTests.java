@@ -1,6 +1,8 @@
-package au.com.ncs;
+package au.com.ncs.tests;
 
 
+import au.com.ncs.model.Form;
+import models.Form;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -75,18 +77,21 @@ public class seleniumTests {
 
         //Assert
         new WebDriverWait(driver, Duration.ofSeconds(2)).until(ExpectedConditions.textToBe(By.cssSelector("div > a.anibtn"), "CLICK ME DOWN!"));
+
     }
 
-//    Form form = new Form(driver);
-//    form.enterName("Tim Manser");
-//    form.enterEmail("manserdev@protonmail.com");
-//    form.selectState("vic");
-//    form.clickAgree();
-//    form.submit();
 
     @Test
     public void FillInFormTest() {
 
+        Form form = new Form(driver);
+        form.enterName("Tim Manser");
+        form.enterEmail("manserdev@protonmail.com");
+        form.selectState("vic");
+        form.clickAgree();
+        form.submit();
+
+        
         //Arrange
         driver.findElement(By.cssSelector("[aria-label=forms]")).click();
         assertEquals("Forms", driver.findElement(By.cssSelector("h1.mb-3")).getText());
