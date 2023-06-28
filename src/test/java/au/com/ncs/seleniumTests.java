@@ -1,5 +1,6 @@
 package au.com.ncs;
 
+
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -18,12 +19,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class seleniumTests {
 
-    private WebDriver driver;
+    public WebDriver driver = getWebDriver();
 
     @BeforeEach
     public void setup() {
 
-        setWebDriver();
         driver.get("https://d18u5zoaatmpxx.cloudfront.net/#/");
         driver.manage().window().maximize();
 
@@ -77,6 +77,13 @@ public class seleniumTests {
         new WebDriverWait(driver, Duration.ofSeconds(2)).until(ExpectedConditions.textToBe(By.cssSelector("div > a.anibtn"), "CLICK ME DOWN!"));
     }
 
+//    Form form = new Form(driver);
+//    form.enterName("Tim Manser");
+//    form.enterEmail("manserdev@protonmail.com");
+//    form.selectState("vic");
+//    form.clickAgree();
+//    form.submit();
+
     @Test
     public void FillInFormTest() {
 
@@ -90,7 +97,7 @@ public class seleniumTests {
         driver.findElement(By.id("email")).sendKeys("manserdev@protonmail.com");
         driver.findElement(By.className("v-select__selections")).click();
 
-        for (WebElement option : driver.findElements(By.cssSelector("[role=option]")) ) {
+        for (WebElement option : driver.findElements(By.cssSelector("[role=option]"))) {
             if (option.getText().equalsIgnoreCase("vic")) {
                 option.click();
                 break;
@@ -100,8 +107,8 @@ public class seleniumTests {
 
         driver.findElement(By.cssSelector("[for=agree]")).click();
 
-        for (WebElement button : driver.findElements(By.cssSelector("[type=button]")) ) {
-            if(button.getText().equalsIgnoreCase("submit")) {
+        for (WebElement button : driver.findElements(By.cssSelector("[type=button]"))) {
+            if (button.getText().equalsIgnoreCase("submit")) {
                 button.click();
             }
 
@@ -122,10 +129,11 @@ public class seleniumTests {
 
     }
 
-    public void setWebDriver() {
+    public WebDriver getWebDriver() {
 
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
-        driver = new ChromeDriver(options);
+        WebDriver driver = new ChromeDriver(options);
+        return driver;
     }
 }
