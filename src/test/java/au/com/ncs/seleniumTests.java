@@ -108,10 +108,10 @@ public class seleniumTests {
         }
 
 
-
-
-
         //Assert
+        By ByPopUpMessage = By.className("popup-message");
+
+        new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOfElementLocated(ByPopUpMessage));
 
     }
 
