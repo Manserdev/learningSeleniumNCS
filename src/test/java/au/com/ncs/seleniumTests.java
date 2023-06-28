@@ -86,7 +86,30 @@ public class seleniumTests {
 
 
         //Act
-        driver.findElement(By.tagName("#name")).sendKeys("Timothy Manser");
+        driver.findElement(By.id("name")).sendKeys("Timothy Manser");
+        driver.findElement(By.id("email")).sendKeys("manserdev@protonmail.com");
+        driver.findElement(By.className("v-select__selections")).click();
+
+        for (WebElement option : driver.findElements(By.cssSelector("[role=option]")) ) {
+            if (option.getText().equalsIgnoreCase("vic")) {
+                option.click();
+                break;
+            }
+
+        }
+
+        driver.findElement(By.cssSelector("[for=agree]")).click();
+
+        for (WebElement button : driver.findElements(By.cssSelector("[type=button]")) ) {
+            if(button.getText().equalsIgnoreCase("submit")) {
+                button.click();
+            }
+
+        }
+
+
+
+
 
         //Assert
 
