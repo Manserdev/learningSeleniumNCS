@@ -2,7 +2,6 @@ package au.com.ncs.tests;
 
 
 import au.com.ncs.model.Form;
-import models.Form;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -91,7 +90,7 @@ public class seleniumTests {
         form.clickAgree();
         form.submit();
 
-        
+
         //Arrange
         driver.findElement(By.cssSelector("[aria-label=forms]")).click();
         assertEquals("Forms", driver.findElement(By.cssSelector("h1.mb-3")).getText());
