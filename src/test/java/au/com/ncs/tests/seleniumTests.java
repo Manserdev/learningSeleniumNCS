@@ -4,6 +4,7 @@ package au.com.ncs.tests;
 import au.com.ncs.model.Form;
 import au.com.ncs.model.Planet;
 import au.com.ncs.model.PlanetPage;
+import au.com.ncs.model.Toolbar;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -107,11 +108,24 @@ public class seleniumTests {
 
     @Test
     public void exploreEarth() throws InterruptedException {
-        driver.findElement(By.cssSelector("[aria-label=planets]")).click();
+
+        new Toolbar(driver).click();
         PlanetPage planetPage = new PlanetPage(driver);
         planetPage.clickPlanet("earth");
         Thread.sleep(2000);
-        }
+    }
+
+
+    @Test
+    public void exploreVenus() throws InterruptedException {
+
+        new Toolbar(driver).click();
+        PlanetPage planetPage = new PlanetPage(driver);
+        planetPage.clickPlanet("venus");
+        Thread.sleep(2000);
+
+
+    }
 
     @AfterEach
     public void clean() {
